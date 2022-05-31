@@ -1,9 +1,11 @@
 from PIL import Image, ImageOps
 from ghost_functions.generate_info import GenerateGhost
-
+import base64
+from io import BytesIO
 
 class ImageProcessing:
     def __init__(self, image):
+        self.og_image = image
         self.image = image
         self.image = Image.open(self.image)
 
@@ -30,11 +32,37 @@ class ImageProcessing:
     def show_image(self):
         self.image.show()
 
-# ghost = GenerateGhost()
+    def save_image(self):
+        self.image.save('output.png')
+        with open('output.png',"rb") as image_file:
+            data = base64.b64encode(image_file.read())
+        return data
 
-# print(ghost.print_info())
-# ghost_image = ImageProcessing("../assets/3.png")
-# ghost_image.invert_image()
-# ghost_image.apply_filter(ghost.ghost_rarity)
-# ghost_image.apply_filter("legendary")
-# ghost_image.show_image()
+
+#def random_image():
+   # return ImageProcessing("../assets/3.png")
+ghost = GenerateGhost()
+
+print(ghost.print_info())
+#ghost_image = random_image()
+#ghost_image.invert_image()
+#ghost_image.apply_filter(ghost.ghost_rarity)
+
+#print(ghost_image.save_image())
+#im = Image.open(BytesIO(base64.b64decode(ghost_image.save_image())))
+#im.show()
+
+
+
+
+#with open ("../assets/3.png","rb") as image_file:
+ #   data = base64.b64encode(image_file.read())
+
+
+
+
+#print(data)
+#im = Image.open(BytesIO(base64.b64decode(data)))
+#im.show()
+
+

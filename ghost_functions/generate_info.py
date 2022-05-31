@@ -34,5 +34,10 @@ class GenerateGhost:
         print("Tipo: {}".format(self.ghost_type))
         print("Localização: {}".format(self.ghost_location))
         print("Raridade: {}".format(self.ghost_rarity))
+
+
+    def full_info(self):
+        ghost_info = {"Nome": self.ghost_name, "Tipo": self.ghost_type, "Localização": self.ghost_location,"Raridade": self.ghost_rarity}
+        return ghost_info
 #ghost = GenerateGhost()
 #print(ghost.print_info())
